@@ -1,29 +1,33 @@
 
 import React, { Component, createRef } from "react";
 
-class inputBox extends Component {
+class InputBox extends Component {
     constructor() {
       super();
       this.state = {
-        
+        value:'',
       };
+      console.log("Inside inputBox Constructor");
     }
   
-    componentDidMount() {
-      
-      
+    handleChange = (e) =>{ 
+        this.setState({value: e.target.value});
+        console.log("Here:", this.state.value);
     }
-  
-    onClickMaker(){
-      console.log("Here");
+
+    saveValue = (e) => {
+       console.log('Current value: ', this.state.value);
     }
-  
     render() {
   
       return (
-        <h1> asdfasdf </h1>
-      );
+        <div>
+                <input type="text" value={this.state.value} onChange={this.handleChange}></input>
+                <button onClick={this.saveValue}>Save</button>
+            
+        </div>
+              );
     }
   }
-export default inputBox;
+export default InputBox;
 
